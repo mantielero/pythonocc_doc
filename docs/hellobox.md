@@ -2,6 +2,7 @@
 [original](https://pythonocc.wordpress.com/2013/02/25/hellobox-the-pythonocc-version-of-helloworld/)
 
 If we type:
+
 ```python
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Display.SimpleGui import init_display
