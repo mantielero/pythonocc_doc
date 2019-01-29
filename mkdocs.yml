@@ -9,6 +9,8 @@ theme:
 nav:
   - Introduction:
     - Modeling Data: modeling_data.md
+  - Tutorial:
+    - HelloBox: hellobox.md
     #- Conceptos: conceptos.md
     #- Propiedades:
     #  - Introducción: propiedades.md
