@@ -16,4 +16,8 @@ start_display()
 ```
 
 It will display:
-![Hellobox Figure](imgs/hellobox.png)
+![Hellobox Figure](imgs/hellobox.png =400x)
+
+It needs to be noted that `OCC.BRepPrimAPI` contains Boundary Representations (BRep) primitives such as `BRepPrimAPI_MakeBox` which creates a box based on three lengths.
+
+We add the box to the display and update it.
