@@ -1,4 +1,4 @@
-site_name: Termodinámica
+site_name: PythonOCC Tutorial
 
 theme:
   name: readthedocs
@@ -7,22 +7,22 @@ theme:
 
 
 nav:
-  - Termodinámica:
-    - Introducción: index.md
-    - Conceptos: conceptos.md
-    - Propiedades:
-      - Introducción: propiedades.md
-      - Presión: presion.md
-    - Estado: estado.md
-    - Proceso: proceso.md
-    - Fase: fase.md
-    - Equilibrio: equilibrio.md
+  - Introduction:
+    - Modeling Data: modeling_data.md
+    #- Conceptos: conceptos.md
+    #- Propiedades:
+    #  - Introducción: propiedades.md
+    #  - Presión: presion.md
+    #- Estado: estado.md
+    #- Proceso: proceso.md
+    #- Fase: fase.md
+    #- Equilibrio: equilibrio.md
 
-  - Primera Ley de la Termodinámica:
-    - Introducción: 1st_intro.md
-    - Aplicaciones:
-        - Ciclos:
-            - Carnot: 1st_ciclo_carnot.md
+  #- Primera Ley de la Termodinámica:
+  #  - Introducción: 1st_intro.md
+  #  - Aplicaciones:
+  #      - Ciclos:
+  #          - Carnot: 1st_ciclo_carnot.md
 
 
 
