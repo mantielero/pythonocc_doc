@@ -1,0 +1,42 @@
+site_name: Termodinámica
+
+theme:
+  name: readthedocs
+#  name: material
+#  highlightjs: true
+
+
+nav:
+  - Termodinámica:
+    - Introducción: index.md
+    - Conceptos: conceptos.md
+    - Propiedades:
+      - Introducción: propiedades.md
+      - Presión: presion.md
+    - Estado: estado.md
+    - Proceso: proceso.md
+    - Fase: fase.md
+    - Equilibrio: equilibrio.md
+
+  - Primera Ley de la Termodinámica:
+    - Introducción: 1st_intro.md
+    - Aplicaciones:
+        - Ciclos:
+            - Carnot: 1st_ciclo_carnot.md
+
+
+
+extra_javascript:
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+- admonition
+- codehilite
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.arithmatex
+- mdx_math:
+    enable_dollar_delimiter: true
+
+plugins:
+- search
