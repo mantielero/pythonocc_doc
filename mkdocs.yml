@@ -11,6 +11,8 @@ nav:
     - Modeling Data: modeling_data.md
   - Tutorial:
     - HelloBox: hellobox.md
+    - Geometry:
+      - Introduction: geom_intro.md
     #- Conceptos: conceptos.md
     #- Propiedades:
     #  - Introducción: propiedades.md
