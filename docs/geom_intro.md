@@ -1,5 +1,6 @@
 # Geometry introduction
 [tutorial pdf](http://trac.lecad.si/vaje/raw-attachment/wiki/PythonOcc/VisualizationOfGeometryWithUtilisingpythonOCC.pdf)
+[examples](https://github.com/tpaviot/pythonocc-core/tree/0.18.1/examples)
 
 We can load a number of classes from the Geometry Procesor:
 
