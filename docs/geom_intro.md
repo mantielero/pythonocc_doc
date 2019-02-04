@@ -92,3 +92,63 @@ core_geometry_quaternion.py
 core_geometry_splinecage.py
 core_geometry_surface_from_curves.py
 core_geometry_utils.py
+
+
+## Reading a STEP file
+For example:
+
+```python
+from OCC.STEPControl import STEPControl_Reader
+step_reader = STEPControl_Reader()
+step_reader.ReadFile('./mystep.stp')
+step_reader.TransferRoot()
+myshape = step_reader.Shape()
+```
+
+Then we can traverse the file searching elements inside. For instance, if we are looking for solids:
+
+```python
+from OCC.TopExp import TopExp_Explorer
+from OCC.TopAbs import TopAbs_SOLID
+
+topExp = TopExp_Explorer()
+topExp.Init(intake_shape, TopAbs_SOLID)
+```
+
+Now we can iterate over the explorer:
+
+```python
+>>> from OCC.TopTools import TopTools_ListOfShape
+>>> seq = []
+>>> hashes = []
+>>> occ_seq = TopTools_ListOfShape()
+>>> topExp.More()
+True
+>>> item = topExp.Current()
+>>> item
+class<'TopoDS_Shape'; Type:Solid; id:916570656>
+>>> dir(item)
+['Checked', 'Closed', 'Complement', 'Complemented', 'Compose', 'Composed', 'Convex', 'EmptyCopied', 'EmptyCopy', 'Free', 'HashCode', 'Infinite', 'IsEqual', 'IsNotEqual', 'IsNull', 'IsPartner', 'IsSame', 'Located', 'Location', 'Locked', 'Modified', 'Move', 'Moved', 'Nullify', 'Orientable', 'Orientation', 'Oriented', 'Reverse', 'Reversed', 'ShapeType', 'TShape', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__eq_wrapper__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__ne_wrapper__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__swig_destroy__', '__weakref__', 'this', 'thisown']
+>>> item.__hash__()
+916570656
+```
+
+The hash can be added into the python list, while the shape should be added into `occ_seq = TopTools_ListOfShape()`:
+
+```python
+hashes.append(item.__hash__())
+occ_seq.Append(current_item)
+```
+
+Then we go to the following matching shape using:
+```
+topExp.Next()
+```
+
+So we use:
+
+- `topExp.Current()`: to get the current shape
+- `topExp.More()`: in order to know if there are more shapes.
+- `topExp.Next()`: in order to go to the following shape.
+
+The convenient class `Topo` is defined in [core_topology_traverse.py](https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_topology_traverse.rst). It is used in the example [core_geometry_face_recognition_from_stepfile.py](https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_geometry_face_recognition_from_stepfile.rst).
