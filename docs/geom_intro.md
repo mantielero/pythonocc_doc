@@ -152,3 +152,50 @@ So we use:
 - `topExp.Next()`: in order to go to the following shape.
 
 The convenient class `Topo` is defined in [core_topology_traverse.py](https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_topology_traverse.rst). It is used in the example [core_geometry_face_recognition_from_stepfile.py](https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_geometry_face_recognition_from_stepfile.rst).
+
+## Viewing in a web page
+To view a STEP file in the browser:
+
+```python
+#!/usr/bin/env python
+from OCC.STEPControl import STEPControl_Reader
+from OCC.Display.WebGl import x3dom_renderer
+from OCC.BRep import BRep_Builder
+from OCC.TopoDS import TopoDS_Shape
+from OCC.BRepTools import breptools_Read
+
+# loads step
+step_reader = STEPControl_Reader()
+step_reader.ReadFile('mystep.stp')
+step_reader.TransferRoot()
+myshape = step_reader.Shape()
+
+my_renderer = x3dom_renderer.X3DomRenderer()
+my_renderer.DisplayShape(myshape)
+my_renderer.render()
+```
+
+In order to view a BREP file:
+
+```python
+# loads brep shape
+cylinder_head = TopoDS_Shape()
+builder = BRep_Builder()
+breptools_Read(cylinder_head, './models/cylinder_head.brep', builder)
+```
+
+See the examples:
+
+- [core_webgl_x3dom_cylinderhead.py](https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_webgl_x3dom_cylinderhead.py)
+- [core_webgl_x3dom_random_boxes.py](https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_webgl_x3dom_random_boxes.py): this shows random boxes. This viewer has the advantage of being able to hide/show shapes. This can be done by adding one shape at a time.
+- []
+- []
+
+https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_webgl_threejs_random_toruses.py
+
+https://github.com/tpaviot/pythonocc-core/blob/0.18.1/examples/core_webgl_threejs_torus.py
+
+http://www.pythonocc.org/resources/tutorial/gettin-started-with-pyqt-wxpython-and-pythonocc/
+
+## Filtrado
+Haremos:

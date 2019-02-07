@@ -13,6 +13,7 @@ nav:
     - HelloBox: hellobox.md
     - Geometry:
       - Introduction: geom_intro.md
+    - Format convertion: convert.md
     #- Conceptos: conceptos.md
     #- Propiedades:
     #  - Introducción: propiedades.md
