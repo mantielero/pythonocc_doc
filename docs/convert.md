@@ -1,4 +1,8 @@
 # Format convertion
+## Introduction
+STL and BREP writers can only deal with 1 shape (e.g. 1 box), so if you have many shapes, you have to fuse them so that they can go into a single STL or BREP file
+
+IGES and STEP writers can deal with multiple shapes (e.g. 1 box + 1 cylinder + 1 freeform shape)
 ## STEP to X3D
 For example:
 
@@ -25,3 +29,29 @@ else:
 
 Tesselator(aResShape).ExportShapeToX3D( output_file )
 ```
+
+## STP to STL
+It is done like:
+
+```python
+from OCC.STEPControl import STEPControl_Reader
+from OCC.StlAPI import StlAPI_Writer
+
+input_file  = 'myshape.stp'   # input STEP (AP203/AP214 file)
+output_file = 'myshape.stl'   # output X3D file
+
+
+step_reader = STEPControl_Reader()
+step_reader.ReadFile( input_file )
+step_reader.TransferRoot()
+myshape = step_reader.Shape()
+print("File readed")
+
+# Export to STL
+stl_writer = StlAPI_Writer()
+stl_writer.SetASCIIMode(True)
+stl_writer.Write(myshape, output_file)
+print("Written")
+```
+
+Based on [this](https://pythonocc.wordpress.com/2013/02/26/creating-an-stl-file-from-a-pythonocc-shape/).
